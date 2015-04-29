@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<!-- entête de la page -->
+	<title>IFBB BOOK</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="themes/ifbb_style.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="js/main.js"></script>
+    
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  	<!-- Common Kendo UI CSS -->
+  	<link href="styles/kendo.common.min.css" rel="stylesheet" />
+
+    <!-- Default Kendo UI theme CSS -->
+    <link href="styles/kendo.default.min.css" rel="stylesheet" />
+
+    <!-- (optional) Kendo UI DataViz CSS, include only if you will use the data visualisation features -->
+    <link href="styles/kendo.dataviz.min.css" rel="stylesheet" />
+
+    <!-- (optional) Kendo UI Mobile CSS, include only if you will use the mobile devices features -->
+    <link href="styles/kendo.default.mobile.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery JavaScript -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Kendo UI combined JavaScript -->
+    <script src="js/kendo.all.min.js"></script>
+    
+    
+    <!--- Calendar AngularJS --->
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.material.min.css" />
+
+    <script src="http://cdn.kendostatic.com/2015.1.408/js/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.408/js/angular.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.408/js/kendo.all.min.js"></script>
+</head>
+
+<!--------------------------- contenu de la page --------------------------->
+<body>
+	<div data-role="page" id="login"><!-- Main -->
+		<header data-role="header" data-position="fixed"><h3>IFBB FRANCE</h3></header>
+		<main data-role="content" id="content">
+			<div>
+				<img src="img/IFBB.png" style=" margin-left:5%; margin-right:5%; width:90%; height:auto;" />
+			</div>
+            <div class="ui-grid-a ui-responsive">
+                <div class="ui-block-a">
+                 <a href="#validlogin" name="validLogin" id="validLogin" data-role="button" data-rel="dialog" data-transition="pop">Connexion</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#inscription" class="ui-grid-b" data-role="button">Créer un compte</a>
+                </div>
+            </div>
+            <a href="#loginPerdu" style="text-decoration:none; font-weight: normal; font-size:0.8em; display:block; text-align:center;">
+                Mot de passe oublié ?
+            </a>              
+		</main>
+		<footer data-role="footer" data-position="fixed"><h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin contenu de la page --------------------------->
+    
+    
+
+<!--------------------------- Validation du login --------------------------->
+	<div data-role="dialog" id="validlogin">	
+		<header data-role="header" data-position="fixed"><h3>Identification</h3></header>	
+		<main>
+            <div class="ui-dialog-contain">
+			<input type="text" name="nom" id="nom" placeholder="Votre Nom et Prénom">
+            <input type="password" name="pass" id="pass" placeholder="Password">
+            <input type="checkbox" name="saveLogin" id="saveLogin"/>
+            <label for="saveLogin" style="background-color:transparent; border:0; font-size:0.7em;">
+                Mémoriser mes coordonnées</label>
+            <a href="#tabboard" name="validLogin" id="validLogin" data-role="button">Connexion</a>
+            <a href="#loginPerdu" style="text-decoration:none; font-weight: normal; font-size:0.8em; display:block; text-align:center;">
+                Mot de passe oublié ?
+            </a>
+            </div>
+		</main>
+		<footer></footer>
+	</div>
+<!--------------------------- Fin Validation du login --------------------------->    
+    
+    
+    
+<!--------------------------- Login perdu --------------------------->    
+    	<div data-role="dialog" id="loginPerdu">	
+		<header data-role="header" data-position="fixed"><h3>Mot de passe perdu ?</h3></header>	
+		<main>
+            <div class="ui-dialog-contain">
+                <input type="text" name="nom" id="nom" placeholder="Votre Nom et Prénom">
+                <input type="text" name="pass" id="licence" placeholder="Votre Numéro de licence">
+                <input type="password" name="pass" id="pass" placeholder="Nouveau mode de passe">
+                <input type="password" name="confirm" id="confirm" placeholder="Confirmer le mot de passe">
+                <a href="#tabboard" name="validLogin" id="validLogin" data-role="button">Connexion</a>
+            </div>
+		</main>
+		<footer></footer>
+	</div>
+<!--------------------------- Fin Login perdu --------------------------->
+
+    
+    
+<!--------------------------- Inscription --------------------------->
+	<div data-role="page" id="inscription">
+		<header data-role="header" data-position="fixed"><h3>IFBB FRANCE</h3>
+        <a href="#login" class="ui-btn-right"  data-transition="slidefade" >Fermer</a>
+        </header>
+		<main data-role="content" id="content"> 
+			<form id="formProfil" method="get" action="#tabboard">    
+            <div> 
+            <h3>Créer votre compte</h3>
+                    <img src="img/photo.png"
+                         style="background: #b0b0b0; 
+                                background-size: 100% auto;
+                                border-top: 1px solid #000000; 
+                                border-bottom: 1px solid #dfdfdd; 
+                                margin:0 auto; 
+                                width: 65px; 
+                                height: 60px; 
+                                border-radius: 50px;"/>
+                    <label for="avatar">Choisissez votre avatar :</label>
+                    <input type="file" name="avatar" id="avatar" />
+                
+                    <label for="profil">Vous étes :</label>
+                        <select id="profil">
+                            <option name="profil1" id="profil1" />Athléte</option>
+                            <option name="profil2" id="profil2" />Juge</option>                
+                            <option name="profil3" id="profil3" />Photographe</option>
+                        </select>
+                    <label for="nom">Votre nom:</label>
+                    <input type="text" name="nom" id="verifNom" placeholder="Nom" onblur="verifNom">
+                    <label for="prenom">Votre prénom:</label>    
+                    <input type="text" name="prenom" id="verifPrenom" placeholder="Prénom" onblur="verifPrenom">
+                    <label for="licence">Votre numéro de licence:</label>
+                    <input type="text" name="licence" id="verifLicence" placeholder="Numéro de Licence">
+                    <label for="naissance">Votre date de naissance:</label>
+                    <input type="date" data-role="date" id="verifNaissance" name="naissance" /> 
+                    <label for="mail">Votre email</label>
+                    <input type="email" name="mail" id="verifMail" placeholder="Votre email" />
+                    <label type="tel">Votre numéro de téléphone</label>
+                    <input type="tel" name="tel" id="verifPhone" placeholder="+33(6)XXXXXXX" />
+                    <label for="categorie">Votre catégorie:</label>
+                    <select name="categorie" id="verifCategorie">
+                        <option>Bodybuilding</option>
+                        <option>Men's classic</option>
+                        <option>Men's Physique</option>
+                        <option>Female Bodybuilding</option>
+                        <option>Women's physique</option>
+                        <option>Women's figure</option>
+                        <option>Bodyfitness</option>
+                        <option>Women's Fitness</option>
+                        <option>Men's Fitness </option>
+                    </select>
+                    <p>
+                    <label for="poids">Votre poids (kg)</label>
+                    <input type="range" name="poids" id="verifPoids" min="0" max="200" value="60" data-highlight="true" />
+                    <label for="taille">Votre taille (cm)</label>
+                    <input type="range" name="taille" id="verifTaille" value="160" min="0" max="250" data-highlight="true" />
+                    <label for="titre">Votre dernier titre :</label>
+                    <input type="text" name="titre" id="verifLastcontest" placeholder="Votre palmares">
+                    <label for="nextcontest">Votre prochaine compétition:</label>
+                    <input type="text" name="nextcontest" id="verifNextcontest" placeholder="Prochaine compétition">
+                    <label for="presentation">Votre Présentation:</label>
+                    <textarea name="presentation" id="verifPresentation" placeholder="Votre présentation"></textarea>
+                    <label for="condition" style="background-color:transparent; border:0; font-size:0.7em;">
+                    <a href="#" style="text-decoration: none;"><input type="checkbox" name="condition" id="condition"/>J'accepte les conditions</a></label>   
+                    <a href="#tabboard" name="validLogin" id="validLogin" data-role="button" onClick="verifForm()">Enregistrer</a>
+            </div>	
+		</form>
+		</main>
+		<footer data-role="footer" data-position="fixed"><h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin inscription --------------------------->
+
+
+
+<!--------------------------- Tableau de bord --------------------------->
+	<div data-role="page" id="tabboard" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+			<h3>IFBB FRANCE</h3>
+			<a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+			<div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="padding-bottom: 0.625em; text-align:center;">
+                      <img src="img/photo.png"
+                             style="background: #b0b0b0; 
+                                    background-size: 100% auto;
+                                    border-top: 1px solid #000000; 
+                                    border-bottom: 1px solid #dfdfdd; 
+                                    margin:0 auto; 
+                                    width: 65px; 
+                                    height: 60px; 
+                                    border-radius: 50px;
+                                    vertical-align:middle;"/>
+                    </div>
+                    <div class="ui-block-b" style="padding-top:0.625em;">
+                        <span style="font-weight:bold;">
+                            <div id="prenomOk"></div><!--- Prenom du user --->&nbsp;
+                            <div id="nomOk"></div><!--- Nom du user --->
+                        </span><br/>
+                        <!--- Numéro de licence ---->
+                        <div id="licenceOk" style="font-size: 0.8em; font-style: italic;"></div>
+                    </div>
+                </div>   
+                <h4>Mes activités</h4>  
+                <div data-role="collapsible" data-collapsed="true">
+                <h3>Mes Notifications</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li>
+                        </ul>
+                    </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes publications</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li> 
+                        </ul>
+                    </p>
+                </div>
+        
+                <h4>Mon compte</h4>
+                <!---- Présentation ---->
+                <textarea placeholder="Votre présentation" id="presentationOk"></textarea>
+                <div data-role="collapsible">
+                <h3>Mes coordonées</h3>
+                    <p>
+                        <ul data-role="listview">
+                             <!----- Numéro de téléphone ---->
+                            <li><div id="phoneOk"></div></li>
+                            <!------ Adresse postal ---->
+                            <li>Adresse postale</li>
+                            <!------- Email ------>
+                            <li><div id="mailOk"></div></li>
+                            <!------ Catégorie ------->
+                            <li><div id="categorieOk"></div></li>
+                            <!------ Licence ------>
+                            <li><div id='licenceOk'></div></li>
+                        </ul>
+                    </p>
+                </div>
+               <div data-role="collapsible">
+               <h3>Mes compétition</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <!---- Date de Naissance ---->
+                            <li><div id='naissanceOk'></div></li> 
+                            <!---- Dernier titre ---->
+                            <li><div id="lastcontestOk"></div></li>
+                            <!---- Prochaine compétition ---->
+                            <li><div id="nextcontestOk"></div></li>
+                        </ul>
+                   </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes statistiques</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <!---- Poids ---->
+                            <li><div id="poidsOk"></div></li> 
+                            <!---- Taille ---->
+                            <li><div id="tailleOk"></div></li>
+                        </ul>
+                    </p>
+                </div>
+                <a href="#inscription" data-role="button">Modifier</a>
+            </div>
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#actu" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#agenda" data-icon="grid" data-shadow="false"  data-transition="slidefade">Agenda</a></li>
+					<li><a href="#msg" data-icon="check" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#contact" data-icon="search" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#config" data-rel="delete" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Tableau de bord --------------------------->
+
+    
+    
+<!--------------------------- Actualité --------------------------->
+	<div data-role="page" id="actu" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+            <a href="#tabboard" class="ui-btn-left"  data-transition="slidefade" >Accueil</a>
+			<h3>IFBB FRANCE</h3>
+			<a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+            <h1>Actualité</h1>
+            
+            <div data-role="">
+                <input type="text" name="nom" id="nom" value="Mon nom" class="ui-state-disabled"/>
+                <textarea style="padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;" placeholder="Exprimez-vous"></textarea>
+                <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <select>
+                        <option>Public</option>
+                        <option>Groupe</option>
+                        <option>Contact</option>
+                        <option>Privé</option>
+                    </select>
+                    <a data-role="button">Publier</a>
+                </div>
+            </div>
+            
+            <div style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                
+                    <a>Afbbf IFBB France</a> <span style="font-style: italic; font-size: 0.8em;">23 avril, 23:38</span>     
+                
+                <p>
+                    ATTENTION 
+                    Pour les men's classic pour toutes les compétitions inter Ifbb 
+                    Maillot noire obligatoire sous peine d'exclusion
+                </p>
+                
+                <div data-type="horizontal">   
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">J'aime</a>&nbsp; 
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">Partager</a>   
+                </div>
+            </div>
+            <div style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                    <a>Afbbf IFBB France</a> <span style="font-style: italic; font-size: 0.8em;">22 avril, 22:09</span>     
+                <p>
+                    <img src="img/hotel.jpg" style="width: 100%; height:auto;" />
+                    PRIX PACKAGE ACCOMPAGNATEUR CHAMPIONNAT D'EUROPE
+                    5 Nuits d' Hotel en Pension Complete du 13 au 18
+                    Entrées au Championnat tous les jours
+                    Autobus Hotel - Compétition
+                    Prix 350€
+                </p>
+                
+                <div data-type="horizontal">   
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">J'aime</a>&nbsp; 
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">Partager</a>   
+                </div>
+            </div>
+            <div style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                    <a>Afbbf IFBB France</a> <span style="font-style: italic; font-size: 0.8em;">22 avril, 09:22</span>     
+                <p>
+                ON VIENT D'AVOIR L'ETAT DES LIEUX DE LA FINALE
+                CONTROLE SAMEDI
+                Dans l'ensemble les athlètes se sont bien comportés
+                Rien de spécial dans l'ensemble
+                CONTROLE DIMANCHE
+                Quelques athlètes se sont mal comportés
+                Tarmac (sol) taché par du Tan et pas qu'un peu 
+                Certains athlètes (Bien qu'on leur a fait la remarque) ont été se                 tanner dans des endroits non protégés à l'écart des autres, alors                 qu'il y avait largement la place sur les endroits protégés et il                   n'y sont allé de "main morte" ,porte tachée, mur taché et j'en                     passe....
+                La Mairie n'est pas contente
+                NOUS ESPERONS QUE CA NE NUISE PAS POUR LA SUITE
+                </p>
+                
+                <div data-type="horizontal">   
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">J'aime</a>&nbsp; 
+                    <a href="#" style="text-decoration:none; font-weight: normal; font-size:0.8em;">Partager</a>
+                </div>    
+            </div>
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+            <div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#" class="ui-btn-active" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#agenda" data-icon="grid" data-shadow="false" data-transition="slidefade">Agenda</a></li>
+					<li><a href="#msg" data-icon="check" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#contact" data-icon="search" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#config" data-rel="delete" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin Actualité --------------------------->
+
+    
+    
+<!--------------------------- Agenda --------------------------->
+	<div data-role="page" id="agenda" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+            <a href="#tabboard" class="ui-btn-left"  data-transition="slidefade">Accueil</a>
+			<h3>IFBB FRANCE</h3>
+            <a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+				Agenda
+
+        <div id="example" ng-app="KendoDemos">
+            <div class="demo-section k-header" ng-controller="MyCtrl">
+                <div class="box-col">
+                    <h4>Start date: <span ng-show="startDate">{{startDate | date:"MMM d, yyyy"}}</span></h4>
+                    <kendo-calendar ng-model="startDate" k-rebind="endDate" max="endDate"></kendo-calendar>
+                </div>
+                <div class="box-col" ng-show="startDate">
+                    <h4>End date: <span ng-show="endDate">{{endDate | date:"MMM d, yyyy"}}</span></h4>
+                    <kendo-calendar ng-model="endDate" k-rebind="startDate" min="startDate" max="maxEndDate"></kendo-calendar>
+                </div>
+            </div>
+            
+            <div>
+                <a href="#" data-role="button">Inscription</a>
+            </div>
+            <style>
+                .demo-section {
+                    width: 700px;
+                    background-color: transparent;
+                }
+            </style>
+        </div>
+
+        <script>
+          angular.module("KendoDemos", [ "kendo.directives" ])
+                .controller("MyCtrl", function($scope){
+                    $scope.$watch("startDate", function(val){
+                      var maxEndDate = new Date(val);
+                      maxEndDate.setDate(maxEndDate.getDate() + 14);
+                      $scope.maxEndDate = maxEndDate;
+                      delete $scope.endDate;
+                  });  
+              })
+        </script>
+
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#actu" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#" data-icon="grid" class="ui-btn-active" data-shadow="false" data-transition="slidefade">Agenda</a></li>
+					<li><a href="#msg" data-icon="check" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#contact" data-icon="search" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#config" data-rel="delete" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin Agenda --------------------------->
+
+
+
+<!--------------------------- Message --------------------------->
+	<div data-role="page" id="msg" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+            <a href="#tabboard" class="ui-btn-left"  data-transition="slidefade">Accueil</a>
+			<h3>IFBB FRANCE</h3>
+			<a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+            <form class="ui-filterable">
+                <div class="ui-grid-a">
+
+                    <div data-role="controlgroup" data-type="horizontal">                
+                        <a class="ui-btn ui-corner-all">Tous</a>
+                        <a class="ui-btn ui-corner-all">Non lu</a>
+                        <a class="ui-btn ui-corner-all">Archivé</a>
+                        <a class="ui-btn ui-corner-all">Corbeille</a>
+                    </div>
+                </div>
+                
+            
+            
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="Recherche">
+                <li style="background:#EDD7BD;">
+                    <div class="ui-grid-b">
+                        <label for="selectmsg-1" style="; border:0; background-color: #EDD7BD;">
+                            <a href="#" style="text-decoration: none;">Jordan 
+                            <a style="color:#b0b0b0; font-size:0.8em; font-style: italic;">| Hey</a></a> 
+                            <input type="checkbox" name="selectmsg-1" id="selectmsg-1" />  
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ui-grid-b">
+                        <label for="selectmsg-2" style="background:#ffffff; border:0;">
+                            <a href="#" style="text-decoration: none;">Candisse
+                            <a style="color:#b0b0b0; font-size:0.8em; font-style: italic;">| Bravo</a></a>                               <input type="checkbox" name="selectmsg-2" id="selectmsg-2" />
+                        </label>
+                    </div>
+                </li>                
+                <li>
+                    <div class="ui-grid-b">
+                        <label for="selectmsg-3" style="background:#ffffff; border:0;">
+                            <a href="#" style="text-decoration: none;">Jordan 
+                            <a style="color:#b0b0b0; font-size:0.8em; font-style: italic;">| Photo</a></a>                               <input type="checkbox" name="selectmsg-3" id="selectmsg-3" />
+                        </label>
+                    </div>
+                </li>                
+                <li>
+                    <div class="ui-grid-d">
+                        <label for="selectmsg-4" style="background:#ffffff; border:0;">
+                            <a href="#" style="text-decoration: none;">Mélinda 
+                            <a style="color:#b0b0b0; font-size:0.8em; font-style: italic;">| Urgent</a></a> 
+                            <input type="checkbox" name="selectmsg-4" id="selectmsg-4" />
+                        </label>
+                    </div>
+                </li>                
+            </ul>
+            </form>
+
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#actu" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#agenda" data-icon="grid" data-shadow="false" data-transition="slidefade">Agenda</a></li>
+					<li><a href="#" data-icon="check" class="ui-btn-active" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#contact" data-icon="search" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#config" data-rel="delete" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin Message --------------------------->
+
+
+
+<!--------------------------- Contact --------------------------->
+	<div data-role="page" id="contact" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+            <a href="#tabboard" class="ui-btn-left"  data-transition="slidefade">Accueil</a>
+			<h3>IFBB FRANCE</h3>
+			<a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+            <div>
+                <p>
+            <h3>Rechercher des contacts</h3>
+                    <input type="search" name="searchcontact" id="searchcontact" placeholder="Nom / Prénom / Catégories / lieux" />
+                    Résultat de la recherche
+                                <fieldset class="ui-grid-b" style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                        <div class="ui-block-a" style="padding-top: 0.313em;  padding-left: 0.625em;">
+                            <img src="img/photo.png"
+                             style="background: #b0b0b0; 
+                                    background-size: 100% auto;
+                                    border-top: 1px solid #000000; 
+                                    border-bottom: 1px solid #dfdfdd; 
+                                    width: 50px; 
+                                    height: 45px; 
+                                    border-radius: 50px;" />
+                            </div>
+                            <div class="ui-block-b" style="padding-top:0.625em; font-size: 0.9em;">
+
+                                    <span style="font-weight:bold;">Prenom &nbsp;Nom</span><br/>
+                                    <span style="font-style: italic; font-size: 0.8em;">Catégories<br/>
+                                        lieu
+                                    </span>
+
+                            </div> 
+                            <div class="ui-block-c">
+                                <a href="#" class="ui-btn ui-corner-all">Invité</a>
+                            </div>    
+                    </fieldset>
+    
+                </p>
+                <p>
+                    <h4>Mes contacts</h4>
+                    
+                    <fieldset class="ui-grid-b" style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                        <div class="ui-block-a" style="padding-top: 0.313em;  padding-left: 0.625em;">
+                            <img src="img/photo.png"
+                             style="background: #b0b0b0; 
+                                    background-size: 100% auto;
+                                    border-top: 1px solid #000000; 
+                                    border-bottom: 1px solid #dfdfdd; 
+                                    width: 50px; 
+                                    height: 45px; 
+                                    border-radius: 50px;" />
+                            </div>
+                            <div class="ui-block-b" style="padding-top:0.625em; font-size: 0.9em;">
+
+                                    <span style="font-weight:bold;">Prenom &nbsp;Nom</span><br/>
+                                    <span style="font-style: italic; font-size: 0.8em;">Catégories<br/>
+                                        lieu
+                                    </span>
+
+                            </div> 
+                            <div class="ui-block-c">
+                                 <a href="#" class="ui-btn ui-corner-all">Amis</a>
+                            </div>    
+                    </fieldset>
+        
+                    <fieldset class="ui-grid-b" style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                        <div class="ui-block-a" style="padding-top: 0.313em;  padding-left: 0.625em;">
+                            <img src="img/photo.png"
+                             style="background: #b0b0b0; 
+                                    background-size: 100% auto;
+                                    border-top: 1px solid #000000; 
+                                    border-bottom: 1px solid #dfdfdd; 
+                                    width: 50px; 
+                                    height: 45px; 
+                                    border-radius: 50px;" />
+                            </div>
+                            <div class="ui-block-b" style="padding-top:0.625em; font-size: 0.9em;">
+
+                                    <span style="font-weight:bold;">Prenom &nbsp;Nom</span><br/>
+                                    <span style="font-style: italic; font-size: 0.8em;">Catégories<br/>
+                                        lieu
+                                    </span>
+
+                            </div> 
+                            <div class="ui-block-c">
+                                    <a href="#" class="ui-btn ui-corner-all">Amis</a>  
+                            </div>   
+                    </fieldset>
+    
+                    <fieldset class="ui-grid-b" style="background-color: #ffffff; padding:0.625em; border-radius: 5px; border: 1px solid #dfdfdd; margin-bottom: 0.313em;">
+                        <div class="ui-block-a" style="padding-top: 0.313em;  padding-left: 0.625em;">
+                            <img src="img/photo.png"
+                             style="background: #b0b0b0; 
+                                    background-size: 100% auto;
+                                    border-top: 1px solid #000000; 
+                                    border-bottom: 1px solid #dfdfdd; 
+                                    width: 50px; 
+                                    height: 45px; 
+                                    border-radius: 50px;" />
+                            </div>
+                            <div class="ui-block-b" style="padding-top:0.625em; font-size: 0.9em;">
+
+                                    <span style="font-weight:bold;">Prenom &nbsp;Nom</span><br/>
+                                    <span style="font-style: italic; font-size: 0.8em;">Catégories<br/>
+                                        lieu
+                                    </span>
+
+                            </div> 
+                            <div class="ui-block-c">
+                                    <a href="#" class="ui-btn ui-corner-all">Amis</a>   
+                            </div>    
+                    </fieldset>
+        
+                <a href="#" class="ui-btn ui-corner-all">Plus </a>
+                </p>
+            </div>
+        </main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#actu" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#agenda" data-icon="grid" data-shadow="false" data-transition="slidefade">Agenda</a></li>
+					<li><a href="#msg" data-icon="check" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#" data-icon="search" class="ui-btn-active" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#config" data-rel="delete" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin Contact --------------------------->
+
+
+
+<!--------------------------- Configuration --------------------------->    
+	<div data-role="page" id="config" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+            <a href="#tabboard" class="ui-btn-left"  data-transition="slidefade">Accueil</a>
+			<h3>IFBB FRANCE</h3>
+			<a href="#login" class="ui-btn-right" data-iconpos="right" data-icon="delete" data-transition="slidefade">Fermer</a>
+		</header>
+		<main data-role="content" id="content">
+				Configuration
+            <div> 
+                <div data-role="collapsible">
+                <h3>Général</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li> 
+                        </ul>
+                    </p>
+                </div>
+            	<div data-role="collapsible">
+                <h3>Mon avatar</h3>
+                    <p>
+                      <img src="img/photo.png" style="background: #b0b0b0; background-size: 100% auto; border-top: 1px solid #000000; border-bottom: 1px solid #dfdfdd; margin:0 auto; width: 65px; height: 60px; border-radius: 50px;"/>
+                    </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes coordonées</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li>Prenom</li>
+                            <li>nom</li>
+                            <li>categorie</li>
+                            <li>Licence</li>
+                            <li>Date de naissance</li>
+                            <li>Email</li>
+                            <li>Téléphone</li>
+                        </ul>
+                    </p>
+                </div>
+               <div data-role="collapsible">
+               <h3>Mes compétition</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li>Catégorie</li>
+                            <li>Titre</li>
+                            <li>Objectif</li>
+                            <li>Présentation</li> 
+                        </ul>
+                   </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes statistiques</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li>Poids</li> 
+                            <li>taille</li>
+                        </ul>
+                    </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Notifications</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li>
+                        </ul>
+                    </p>
+                </div>
+               <div data-role="collapsible">
+               <h3>Confidentialité</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li>Sécurité</li>
+                        </ul>
+                   </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Blocage</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li> 
+                        </ul>
+                    </p>
+                </div>
+                <a href="#editconfig" data-role="button">Modifier</a>
+            
+                 <a href="#mention" style="text-decoration:none; font-weight: normal; font-size:0.8em; display:block; text-align:center;">Voir les mentions légales</a>
+            </div>
+            
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#actu" data-icon="home" data-shadow="false" data-transition="slidefade">Actualité</a></li>
+					<li><a href="#agenda" data-icon="grid" data-shadow="false" data-transition="slidefade">Agenda</a></li>
+					<li><a href="#msg" data-icon="check" data-shadow="false" data-transition="slidefade">Message</a></li>
+					<li><a href="#contact" data-icon="search" data-shadow="false" data-transition="slidefade">Contact</a></li>
+					<li><a href="#" data-rel="delete" class="ui-btn-active" data-icon="search" data-shadow="false" data-transition="slidefade">Config</a></li>
+				</ul>
+			</div>
+			<h4>Cleria / AFoessel &copy; 2015</h4></footer>
+	</div>
+<!--------------------------- Fin Configuration --------------------------->
+
+
+<!--------------------------- Edit Configuration --------------------------->
+	<div data-role="dialog" id="editconfig" data-add-back-btn="true" data-add-back-text="Back">
+		<header data-role="header" data-position="fixed">
+        	<h3>Configuration</h3>
+		</header>
+		<main data-role="content" id="content">
+            <div> 
+                <div data-role="collapsible">
+                <h3>Général</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li> 
+                        </ul>
+                    </p>
+                </div>
+				<div data-role="collapsible">
+                <h3>Mon avatar</h3>
+                    <p>
+                      <img src="img/photo.png" style="background: #b0b0b0; background-size: 100% auto; border-top: 1px solid #000000; border-bottom: 1px solid #dfdfdd; margin:0 auto; width: 65px; height: 60px; border-radius: 50px;"/>
+                    </p>
+                    <input type="file" name="avatar" id="avatar" />
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes coordonées</h3>
+                    <p>
+                        <ul data-role="listview">
+                              <li><input type="text" name="nom" id="nom" placeholder="Votre nom" value="nom" /></li>                       
+                            <li><input type="text" name="prenom" id="prenom" placeholder="Votre prenom" value="Prenom" /></li>  
+                           <li><input type="text" name="licence" id="licence" placeholder="Votre numéro de Licence" value="Licence"></li>
+                           <li><input type="date" name="naissance" id="naissance" placeholder="JJ/MM/AAAA" value="" /></li>
+                            <li><input type="email" name="mail" id="mail" placeholder="monadresse@mail.fr" value="" /></li>
+                            <li><input type="tel" name="tel" id="tel" placeholder="+33(6)XXXXXX"/></li>
+                        </ul>
+                    </p>
+                </div>
+               <div data-role="collapsible">
+               <h3>Mes compétition</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li><label for="categorie">Votre catégorie:</label>
+                            <select id="categorie">
+                                <option>Bodybuilding</option>
+                                <option>Men's classic</option>
+                                <option>Men's Physique</option>
+                                <option>Female Bodybuilding</option>
+                                <option>Women's physique</option>
+                                <option>Women's figure</option>
+                                <option>Bodyfitness</option>
+                                <option>Women's Fitness</option>
+                                <option>Men's Fitness </option>
+                            </select>
+                            </li>
+                            <li><input type="text" name="titre" id="titre" placeholder="Votre Titre" value="" /></li>
+                            <li><input type="text" name="objectif" id="objectif" placeholder="Votre prochaine compétition" value="Objectif" /></li>
+                            <li><textarea name="presentation" id="presentation" placeholder="Votre présentation"></textarea></li>
+                        </ul>
+                   </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Mes statistiques</h3>
+                    <p>
+                        <ul data-role="listview"> 
+                            <li><label for="poids">Votre poids :</label>
+                            <input type="range" name="poids" id="poids" value="75" min="0" max="200"  data-highlight="true" /></li>                     
+                            <li><label for="taille">Votre taille :</label>
+                            <input type="range" name="taille" id="taille" value="75" min="0" max="250" data-highlight="true" /></li>
+                        </ul>
+                    </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Notifications</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li>
+                        </ul>
+                    </p>
+                </div>
+               <div data-role="collapsible">
+               <h3>Confidentialité</h3>
+                    <p>
+                        <ul data-role="listview">
+                            
+                            <li>
+                                <select for="security">
+                                    <option name="secu_low" id="secu_low" /> Afficher les coordonnées à tout le monde</option>
+                                    <option name="secu_med" id="secu_low" /> Afficher les coordonnées pour mes contacts</option>
+                                    <option name="secu_high" id="secu_low" /> Ne pas Afficher les coordonnées</option>
+                                </select>
+                            </li>
+                        </ul>
+                   </p>
+                </div>
+                <div data-role="collapsible">
+                <h3>Blocage</h3>
+                    <p>
+                        <ul data-role="listview">
+                            <li></li> 
+                        </ul>
+                    </p>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a href="#config" class="ui-btn ui-corner-all">Annuler</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a href="#config" class="ui-btn  ui-corner-all" data-role="button">Valider</a>
+                    </div>
+                </div>
+            </div>
+		</main>
+		<footer data-role="footer" data-position="fixed"  style="border:0"></footer>
+	</div>
+
+<!--------------------------- Fin Edit Configuration --------------------------->
+
+<!--------------------------- Mention légale --------------------------------->
+<div data-role="dialog" id="mention">
+    <header data-role="header" data-position="fixed"><h1>Mentions légales</h1></header>
+    <main data-role="content">
+        <div>
+            <h1>MENTIONS LÉGALES DES APPLICATIONS MOBILE</h1>
+                <h2>Editeur de l'application : </h2>
+               
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non vestibulum tellus. Integer aliquet ipsum risus, vel consequat diam mollis eget. Nullam tempor nulla ac odio pulvinar, at volutpat lorem rhoncus. Nunc ligula odio, consequat a nulla vel, ornare suscipit enim. Integer eget imperdiet eros. Cras nunc magna, aliquet quis neque in, pulvinar tincidunt arcu. Suspendisse eget posuere odio, sed tincidunt urna. Praesent euismod nibh non magna rutrum, ut ornare mauris malesuada. 
+            </div>
+        </div>
+    </main>
+    <footer data-role="footer">
+        <h4>Cleria & AFossel &copy; 2015</h4>
+    </footer>
+</div>
+        
+<!--------------------------- Mention légale --------------------------------->
+
+
+</body>
+</html>
